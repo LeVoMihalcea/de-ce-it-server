@@ -1,0 +1,8 @@
+version: '2'
+services:
+  redis:
+    image: redis
+    container_name: deceit-redis
+    restart: always
+    ports:
+      - "6400:6379"
