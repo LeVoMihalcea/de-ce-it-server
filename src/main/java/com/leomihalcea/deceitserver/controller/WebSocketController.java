@@ -19,6 +19,7 @@ public class WebSocketController {
     @MessageMapping("/wikipedia")
     @SendTo("/socket/wikipedia")
     public WSWikipedia wikipediaStart(WSWikipedia message) {
+        redissonStorage.clearReactionTimes();
         return message;
     }
 

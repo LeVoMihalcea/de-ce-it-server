@@ -32,4 +32,8 @@ public class RedissonStorage {
     public RMap<String, Map<String, JeopardyTile>> getJeopardyTileMap() {
         return redissonClient.getMap("teamPoints");
     }
+
+    public void clearReactionTimes() {
+        getReactionTimes().clear();
+    }
 }

@@ -17,13 +17,13 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/wikipedia");
-        registry.addEndpoint("/wikipedia").withSockJS();
-        registry.addEndpoint("/wikipediaPress");
-        registry.addEndpoint("/wikipediaPress").withSockJS();
-        registry.addEndpoint("/jeopardyStart");
-        registry.addEndpoint("/jeopardyStart").withSockJS();
-        registry.addEndpoint("/jeopardyPress");
-        registry.addEndpoint("/jeopardyPress").withSockJS();
+        registry.addEndpoint("/wikipedia").setAllowedOriginPatterns("**");
+        registry.addEndpoint("/wikipedia").setAllowedOriginPatterns("*").withSockJS();
+        registry.addEndpoint("/wikipediaPress").setAllowedOriginPatterns("*");
+        registry.addEndpoint("/wikipediaPress").setAllowedOriginPatterns("*").withSockJS();
+        registry.addEndpoint("/jeopardyStart").setAllowedOriginPatterns("*");
+        registry.addEndpoint("/jeopardyStart").setAllowedOriginPatterns("*").withSockJS();
+        registry.addEndpoint("/jeopardyPress").setAllowedOriginPatterns("*");
+        registry.addEndpoint("/jeopardyPress").setAllowedOriginPatterns("*").withSockJS();
     }
 }

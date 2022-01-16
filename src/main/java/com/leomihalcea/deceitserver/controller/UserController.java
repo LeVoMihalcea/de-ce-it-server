@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 @SuppressWarnings("ArraysAsListWithZeroOrOneArgument")
 @RestController
 @RequestMapping("/v1/users")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     private final RedissonStorage redissonStorage;
