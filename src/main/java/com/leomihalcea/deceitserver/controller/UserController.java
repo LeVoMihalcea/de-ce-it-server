@@ -1,19 +1,14 @@
 package com.leomihalcea.deceitserver.controller;
 
 import com.leomihalcea.deceitserver.model.IntegerWrapper;
+import com.leomihalcea.deceitserver.model.ReactionTimeTeamResult;
 import com.leomihalcea.deceitserver.model.User;
 import com.leomihalcea.deceitserver.storage.RedissonStorage;
 import org.redisson.api.RMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("ArraysAsListWithZeroOrOneArgument")
@@ -51,9 +46,15 @@ public class UserController {
     }
 
     @GetMapping(value = "/reaction")
-    public Map<String, Integer> getReactions() {
+    public List<ReactionTimeTeamResult> getReactions() {
         RMap<String, Integer> reactionTimes = redissonStorage.getReactionTimes();
-        return reactionTimes.entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        return reactionTimes.entrySet().stream()
+                .map(stringIntegerEntry ->
+                        ReactionTimeTeamResult.builder()
+                                .username(stringIntegerEntry.getKey())
+                                .time(stringIntegerEntry.getValue())
+                                .build())
+                .collect(Collectors.toList());
     }
 
 }
