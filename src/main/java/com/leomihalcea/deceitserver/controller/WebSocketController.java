@@ -16,27 +16,27 @@ public class WebSocketController {
         this.redissonStorage = redissonStorage;
     }
 
-    @MessageMapping("/wikipedia")
+    @MessageMapping("/ws/wikipedia")
     @SendTo("/socket/wikipedia")
     public WSWikipedia wikipediaStart(WSWikipedia message) {
         redissonStorage.clearReactionTimes();
         return message;
     }
 
-    @MessageMapping("/wikipediaPress")
+    @MessageMapping("/ws/wikipediaPress")
     @SendTo("/socket/wikipediaPress")
     public FromAndTime wikipediaDone(FromAndTime fromAndTime) {
         redissonStorage.getReactionTimes().put(fromAndTime.getFrom(), fromAndTime.getMs());
         return fromAndTime;
     }
 
-    @MessageMapping("/jeopardyStart")
+    @MessageMapping("/ws/jeopardyStart")
     @SendTo("/socket/jeopardyStart")
     public String jeopardyReady(String message) {
         return message;
     }
 
-    @MessageMapping("/jeopardyPress")
+    @MessageMapping("/ws/jeopardyPress")
     @SendTo("/socket/jeopardyPress")
     public FromAndTime jeopardyDone(FromAndTime fromAndTime) {
         redissonStorage.getReactionTimes().put(fromAndTime.getFrom(), fromAndTime.getMs());

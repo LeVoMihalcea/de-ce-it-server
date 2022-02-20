@@ -17,13 +17,13 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/wikipedia").setAllowedOriginPatterns("**");
-        registry.addEndpoint("/wikipedia").setAllowedOriginPatterns("*").withSockJS();
-        registry.addEndpoint("/wikipediaPress").setAllowedOriginPatterns("*");
-        registry.addEndpoint("/wikipediaPress").setAllowedOriginPatterns("*").withSockJS();
-        registry.addEndpoint("/jeopardyStart").setAllowedOriginPatterns("*");
-        registry.addEndpoint("/jeopardyStart").setAllowedOriginPatterns("*").withSockJS();
-        registry.addEndpoint("/jeopardyPress").setAllowedOriginPatterns("*");
-        registry.addEndpoint("/jeopardyPress").setAllowedOriginPatterns("*").withSockJS();
+        registry.addEndpoint("/ws/ws/wikipedia").setAllowedOriginPatterns("**");
+        registry.addEndpoint("/ws/wikipedia").setAllowedOriginPatterns("*").withSockJS();
+        registry.addEndpoint("/ws/wikipediaPress").setAllowedOriginPatterns("*");
+        registry.addEndpoint("/ws/wikipediaPress").setAllowedOriginPatterns("*").withSockJS();
+        registry.addEndpoint("/ws/jeopardyStart").setAllowedOriginPatterns("*");
+        registry.addEndpoint("/ws/jeopardyStart").setAllowedOriginPatterns("*").withSockJS();
+        registry.addEndpoint("/ws/jeopardyPress").setAllowedOriginPatterns("*");
+        registry.addEndpoint("/ws/jeopardyPress").setAllowedOriginPatterns("*").withSockJS();
     }
 }
