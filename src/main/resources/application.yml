@@ -1,7 +1,7 @@
 spring:
   redis:
-    host: localhost
-    port: 6400
+    host: redis
+    port: 6379
     password:
     client-name: POS
     redisson:
