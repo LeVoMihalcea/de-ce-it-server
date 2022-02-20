@@ -19,6 +19,14 @@ services:
       - deceit
     ports:
       - "8080:8080"
+  de-ce-it-webapp:
+      image: de-ce-it-webapp
+      container_name: de-ce-it-webapp
+      restart: always
+      networks:
+        - deceit
+      ports:
+        - "80:80"
 
 networks:
   deceit:
