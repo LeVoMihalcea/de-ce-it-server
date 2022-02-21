@@ -17,7 +17,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws/ws/wikipedia").setAllowedOriginPatterns("**");
+        registry.addEndpoint("/ws/wikipedia").setAllowedOriginPatterns("**");
         registry.addEndpoint("/ws/wikipedia").setAllowedOriginPatterns("*").withSockJS();
         registry.addEndpoint("/ws/wikipediaPress").setAllowedOriginPatterns("*");
         registry.addEndpoint("/ws/wikipediaPress").setAllowedOriginPatterns("*").withSockJS();
